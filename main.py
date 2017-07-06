@@ -14,15 +14,12 @@ if os.path.exists(strNameOfBadFile):
 
     oneString = True
     while oneString:
-        oneString = objBadLogFile.readline(intStringSize)  # читаю файл по одной строке
-        arrayOfStrings = arrayOfStrings + [oneString]  # создаю массив под одной строке
-        tempString = parsing.deleteChar(oneString)  # очищаю одну строку от плохих символов
-        print(tempString)
-        objNormalLogFile.write(tempString)
+        oneString = objBadLogFile.readline(intStringSize)  # считать файл по одной строке
+        arrayOfStrings = arrayOfStrings + [oneString]  # созадь массив под одной строке
+        strWithoutBadChar = parsing.deleteChar(oneString)  # очистить одну строку от плохих символов
+        print(strWithoutBadChar)
+        objNormalLogFile.write(strWithoutBadChar+'\n')
     objBadLogFile.close()
     objNormalLogFile.close()
 else:
     print("File is No exist")
-
-
-
