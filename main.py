@@ -1,31 +1,21 @@
 import os
 import parsing
 
-intStringSize = 2000
-strNameOfBadFile = 'log.log'
+''' глобальные переменные '''
+str_name_of_bad_file='log.log'
+str_name_of_good_file='normal.log'
+int_max_size_of_read_string=2000
 
+''' работа '''
+array_from_file = parsing.get_array_from_file(str_name_of_bad_file, int_max_size_of_read_string)
+print(array_from_file)
 
-if os.path.exists(strNameOfBadFile):
-    print("File is exist")
+array_of_good_strings = parsing.delete_char_from_array(array_from_file)
+print(array_of_good_strings)
 
-    objNormalLogFile = open('normal.log', 'w')
-    objBadLogFile = open(strNameOfBadFile, 'r')
+array_of_good_strings = parsing.delete_empty_element_from_array(array_of_good_strings)
+print(array_of_good_strings)
 
-    arrayOfGoodStrings = []
-    strBadString = True
-    while strBadString:
-        strBadString = objBadLogFile.readline(intStringSize)  # считать файл по одной строке
-        strWithoutBadChar = parsing.deleteChar(strBadString)  # очистить одну строку от плохих символов
-        arrayOfGoodStrings.append(strWithoutBadChar.strip())  # созадь массив под одной строке
-        print(strWithoutBadChar)
-        objNormalLogFile.write(strWithoutBadChar+'\n')
+parsing.put_array_to_file(array_of_good_strings, PRINT=True)
 
-    #s = parsing.deleteEmptyElement(arrayOfGoodStrings)
-    #print(s)
-
-    objBadLogFile.close()
-    objNormalLogFile.close()
-
-else:
-    print("File is No exist")
 
