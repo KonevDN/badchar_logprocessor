@@ -61,3 +61,43 @@ def combine_all_strings(array_of_good_strings: list):
     #print(array_of_new_good_strings)  # вывести в консоль для отладочной цели
     #array_of_good_strings = array_of_new_good_strings  # теперь в хороший массив записываются новые данные вместо старых, это типа return
     return array_of_new_good_strings
+
+def insert_white_space(array_of_strings:list, str_search_string:str='-=D_RUN APPL FM3=-', int_count_of_white_space:int=15):
+    """ функция находит требуемую строк в массиве и перед ней ставит требуемое количество пустых строк
+    для форматирования текста, чтобы удобно было читать,  в частночит это применяется для того, чтобы
+    визуально легко отделить один старт маяка от другого старта маяка \n
+    str_search_string - строка в массиве, которую нужно найти и поставить перед ней пробелы, но у меня пока не получлось передать значение этой переменной в re.compile, поэтому эта переменная пока является бесполезной
+    array_of_strings - массив, который надо обработать
+    int_count_of_white_space - количество белых строк,которое надо добавить
+    """
+    import re   # импорт модуля, будем работать с регулярными выражениями
+    array_of_new_strings = []   # новый массив, который создаст и вернет данная функция
+    array_of_current_strings = array_of_strings    # принятый массив сделаем текущим
+    objTemplateOfRunString = re.compile(r'^(\s)(\d\d:\d\d:\d\d.\d\d\d)(>)?(\s){1,10}(%s)' % str_search_string)  #
+    for index in range(len(array_of_current_strings)):
+        objMatch = objTemplateOfRunString.search(array_of_current_strings[index])
+        if (objMatch != None):
+            str_found_string = objMatch.group().strip()
+            str_found_string = '\n' * int_count_of_white_space + str_found_string
+            array_of_current_strings[index] = str_found_string
+        array_of_new_strings = array_of_current_strings
+    return array_of_new_strings
+
+def delete_at_commands(array_of_strings:list):
+    """ # 18:39:06.790> [+] GSM: at+cmgl=4 """
+
+    import re  # импорт модуля, будем работать с регулярными выражениями
+    array_of_new_strings = []   # новый массив, который создаст и вернет данная функция
+    array_of_current_strings = array_of_strings    # принятый массив сделаем текущим
+    objTemplateOfString = re.compile(r'^(\s)(\d\d:\d\d:\d\d.\d\d\d)(>)?(\s){1,10}\[\+|t\](.)+' )  #
+    for index in range(len(array_of_current_strings)):
+        str1 = array_of_current_strings[index]
+        objMatch = objTemplateOfString.search(array_of_current_strings[index])
+        if objMatch != None:
+            str_found_string = objMatch.group()
+            str_found_string
+            continue
+        else:   # if None
+            array_of_new_strings.append(array_of_current_strings[index])
+
+    return array_of_new_strings

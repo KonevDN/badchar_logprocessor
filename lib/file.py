@@ -1,12 +1,14 @@
 import os
 
 
+
 def get_array_from_file( str_name_of_bad_file='log.log', int_max_size_of_read_string=2000 ):
     int_max_size_of_read_string = int(int_max_size_of_read_string)  # int_max_count_of_read_char = 2000 для примера
     str_name_of_bad_file = str(str_name_of_bad_file)  # str_name_of_bad_file = 'log.log' для примера
     array_from_file = []
     if os.path.exists(str_name_of_bad_file):
         print("File %s is exist" % str_name_of_bad_file)
+        print(os.path.getctime(str_name_of_bad_file))
         objBadLogFile = open(str_name_of_bad_file, 'r')
         str_one_bad_string = True
         while str_one_bad_string:
@@ -29,3 +31,5 @@ def put_array_to_file( array_of_good_strings: list, str_name_of_good_file: str =
             print(str_one_element)
     objNormalLogFile.close()
     return None
+
+
