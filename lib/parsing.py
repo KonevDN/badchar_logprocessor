@@ -65,7 +65,7 @@ def combine_all_strings(array_of_good_strings: list):
 
 
 def insert_white_space(array_of_strings:list, str_search_string:str='-=D_RUN APPL FM3=-', int_count_of_white_space:int=15):
-    """ функция находит требуемую строк в массиве и перед ней ставит требуемое количество пустых строк
+    """ функция находит требуемую строку в массиве и перед ней ставит требуемое количество пустых строк
     для форматирования текста, чтобы удобно было читать,  в частночит это применяется для того, чтобы
     визуально легко отделить один старт маяка от другого старта маяка \n
     str_search_string - строка в массиве, которую нужно найти и поставить перед ней пробелы, но у меня пока не получлось передать значение этой переменной в re.compile, поэтому эта переменная пока является бесполезной
@@ -96,10 +96,30 @@ def delete_at_commands(array_of_strings:list):
         # str1 = array_of_current_strings[index] отладка
         objMatch = objTemplateOfString.search(array_of_current_strings[index])
         if objMatch != None:
-            str_found_string = objMatch.group()
-            str_found_string
+            # str_found_string = objMatch.group()
             continue
         else:   # if None
             array_of_new_strings.append(array_of_current_strings[index])
 
     return array_of_new_strings
+
+
+def insert_information_for_atcommands(array_of_bad_strings:list, dict_of_atcommands: dict)->list:
+    # 17:20:43.915     at+cdsds=1 пример для отладки
+    import re
+    from copy import copy
+    array_of_current_strings = copy(array_of_bad_strings)
+    array_of_new_good_strings = copy(array_of_bad_strings)
+    objTemplateOfSearchString = re.compile(r'^(\s)?(\d\d:\d\d:\d\d.\d\d\d)(>)?(\s){1,10}(at\+\w+)')
+    for index in range(len(array_of_current_strings)):
+        objMatch = objTemplateOfSearchString.search(array_of_current_strings[index])
+        if (objMatch != None):
+            str_found_command_name = objMatch.group(5)  # взять 5ю группу, там содержится полное имя найденной Ат-команды
+            # str_found_full_string = objMatch.group()    # взять всю строку, в которой найдена АТ-команда
+            if str_found_command_name in dict_of_atcommands:
+                str_help_string = array_of_current_strings[index] + ' '*10 + 'help: ' + dict_of_atcommands[str_found_command_name] # составляется строка с подсказкой о назначении АТ-команды взамен текущей строки массива
+                array_of_new_good_strings[index] = str_help_string # тут строка с подсказкой о назначении АТ-команды запихивается в новый массив, чтобы не испортить текущий массив. новый массив будет возвращаться функцией
+                continue
+            continue
+        continue
+    return array_of_new_good_strings
