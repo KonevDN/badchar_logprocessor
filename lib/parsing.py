@@ -7,6 +7,7 @@ def delete_char_from_string( str_one_bad_string ):
     #str_one_bad_string = str_one_bad_string.replace('>', ' ')
     #str_one_bad_string = str_one_bad_string.replace('<', ' ')
     str_one_bad_string = str_one_bad_string.replace('\0', ' ')
+    str_one_bad_string = str_one_bad_string.replace('< 0 >', ' ')
     # str_one_bad_string = str_one_bad_string.replace('-', ' ')
     str_one_good_string = str_one_bad_string
     return str(str_one_good_string)
@@ -21,20 +22,20 @@ def delete_char_from_array( array_of_bad_strings ):
     return array_of_good_strings
 
 
-def delete_empty_element_from_array( array_of_bad_strings ):
+def delete_empty_element_from_array(array_of_bad_strings: list):
     ''' функция получает массив и возвращает массив, она удаляет плохие элементы массива '''
-    array_of_bad_strings = list(array_of_bad_strings)
-    str1 = ''
-    str2 = ' '
+    array_of_bad_strings = array_of_bad_strings
+    str_empty_string1 = ''
+    str_empty_string2 = ' '
     array_of_good_strings = []
     for str_one_element in array_of_bad_strings:
-        if str_one_element != str1 and str_one_element != str2:
+        if str_one_element != str_empty_string1 and str_one_element != str_empty_string2:
             array_of_good_strings.append(str_one_element)
     return array_of_good_strings
 
 
 def combine_all_strings(array_of_good_strings: list):
-    ''' функция перебирает строки массива и убирает беспорядочные переносы строк,которые есть в сиходнике '''
+    ''' функция перебирает строки массива и убирает беспорядочные переносы строк,которые есть в иcходнике '''
     import re
     array_of_new_good_strings = []  # инициальизация нового пустого массива
     objTemplateOfTimeString = re.compile(
@@ -61,6 +62,7 @@ def combine_all_strings(array_of_good_strings: list):
     #print(array_of_new_good_strings)  # вывести в консоль для отладочной цели
     #array_of_good_strings = array_of_new_good_strings  # теперь в хороший массив записываются новые данные вместо старых, это типа return
     return array_of_new_good_strings
+
 
 def insert_white_space(array_of_strings:list, str_search_string:str='-=D_RUN APPL FM3=-', int_count_of_white_space:int=15):
     """ функция находит требуемую строк в массиве и перед ней ставит требуемое количество пустых строк
@@ -91,7 +93,7 @@ def delete_at_commands(array_of_strings:list):
     array_of_current_strings = array_of_strings    # принятый массив сделаем текущим
     objTemplateOfString = re.compile(r'^(\s)(\d\d:\d\d:\d\d.\d\d\d)(>)?(\s){1,10}\[\+|t\](.)+' )  #
     for index in range(len(array_of_current_strings)):
-        str1 = array_of_current_strings[index]
+        # str1 = array_of_current_strings[index] отладка
         objMatch = objTemplateOfString.search(array_of_current_strings[index])
         if objMatch != None:
             str_found_string = objMatch.group()
