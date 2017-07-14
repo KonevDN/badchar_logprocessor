@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0d51be77-8954-44b6-99db-6f318030c9b8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/normal.log" afterPath="$PROJECT_DIR$/normal.log" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -393,7 +392,14 @@
       <option name="project" value="LOCAL" />
       <updated>1499967873974</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Рабочая версия скрипта:&#10;на всякий случай&#10;добавил пропавший файл bad.log">
+      <created>1500041482515</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1500041482515</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -480,6 +486,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="Рабочая версия скрипта.&#10;- переименованы переменные;&#10;- добавлен '\n' в objNormalLogFile.write(strWithoutBadChar+'\n')" />
     <MESSAGE value="Рабочая версия скрипта.&#10;- коммит перед тем, как я бду переделывать всю логику скрипта" />
     <MESSAGE value="Рабочая версия скрипта.&#10;- коммит после полной переделки логики скрипта, работает успешно&#10;- можно продолжать разработку" />
@@ -491,7 +498,8 @@
     <MESSAGE value="Рабочая версия скрипта:&#10;- созад код для расшифровки имен АТ команд, он работает и формирует нужный файл,&#10;но нужно теперь исправить багу с тем, что я не знал, что массивы и вообще переменные передаются по ссылке, а не по значению&#10;- и нужно оформить этот код теперь в отдельную функцию, убрав из файла main.py" />
     <MESSAGE value="Рабочая версия скрипта:&#10;- создан код для расшифровки имен АТ команд, он работает и формирует нужный файл,&#10;- исправлна бага с тем, что я не знал, что массивы и вообще переменные передаются по ссылке, а не по значению&#10;- код оформлен в отдельную функцию и убран из файла main.py" />
     <MESSAGE value="Рабочая версия скрипта:&#10;на всякий случай" />
-    <option name="LAST_COMMIT_MESSAGE" value="Рабочая версия скрипта:&#10;на всякий случай" />
+    <MESSAGE value="Рабочая версия скрипта:&#10;на всякий случай&#10;добавил пропавший файл bad.log" />
+    <option name="LAST_COMMIT_MESSAGE" value="Рабочая версия скрипта:&#10;на всякий случай&#10;добавил пропавший файл bad.log" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
