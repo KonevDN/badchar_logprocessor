@@ -1,3 +1,4 @@
+# coding=utf-8
 from lib import file
 from lib import parsing
 
@@ -53,5 +54,5 @@ array_of_good_strings = parsing.insert_white_space(array_of_good_strings, '-=D_R
 array_of_good_strings = parsing.delete_at_commands(array_of_good_strings)
 array_of_good_strings = parsing.insert_information_for_atcommands(array_of_good_strings, dict_of_atcommands)
 
-file.put_array_to_file(array_of_good_strings, PRINT=False)
+file.put_array_to_file(array_of_good_strings, bool_need_print=False)
 

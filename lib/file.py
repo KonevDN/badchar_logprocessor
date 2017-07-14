@@ -1,3 +1,4 @@
+# coding=utf-8
 import os
 
 
@@ -7,8 +8,6 @@ def get_array_from_file( str_name_of_bad_file='log.log', int_max_size_of_read_st
     str_name_of_bad_file = str(str_name_of_bad_file)  # str_name_of_bad_file = 'log.log' для примера
     array_from_file = []
     if os.path.exists(str_name_of_bad_file):
-        #print("File %s is exist" % str_name_of_bad_file)
-        print(os.path.getctime(str_name_of_bad_file))
         objBadLogFile = open(str_name_of_bad_file, 'r')
         str_one_bad_string = True
         while str_one_bad_string:
@@ -22,12 +21,12 @@ def get_array_from_file( str_name_of_bad_file='log.log', int_max_size_of_read_st
 
 
 def put_array_to_file( array_of_good_strings: list, str_name_of_good_file: str = 'normal.log',
-                       PRINT: bool = True ) -> None:
+                       bool_need_print: bool = True ) -> None:
     objNormalLogFile = open(str_name_of_good_file, 'w')
     for str_one_element in array_of_good_strings:
         # str_one_element = str_one_element + '\n'
         objNormalLogFile.write(str_one_element)
-        if PRINT == True:
+        if bool_need_print == True:
             print(str_one_element)
     objNormalLogFile.close()
     return None

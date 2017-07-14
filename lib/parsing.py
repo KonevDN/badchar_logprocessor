@@ -1,14 +1,15 @@
+# coding=utf-8
 def delete_char_from_string( str_one_bad_string ):
     ''' функция получает строку и возвращает строку , она удаляет плохие элементы массива '''
     str_one_bad_string = str_one_bad_string.replace('\\r', ' ')
     str_one_bad_string = str_one_bad_string.replace('\\n', ' ')
     str_one_bad_string = str_one_bad_string.replace('\r', ' ')
     str_one_bad_string = str_one_bad_string.replace('\n', ' ')
-    #str_one_bad_string = str_one_bad_string.replace('>', ' ')
-    #str_one_bad_string = str_one_bad_string.replace('<', ' ')
     str_one_bad_string = str_one_bad_string.replace('\0', ' ')
     str_one_bad_string = str_one_bad_string.replace('< 0 >', ' ')
-    # str_one_bad_string = str_one_bad_string.replace('-', ' ')
+    #str_one_bad_string = str_one_bad_string.replace('>', ' ')
+    #str_one_bad_string = str_one_bad_string.replace('<', ' ')
+    #str_one_bad_string = str_one_bad_string.replace('-', ' ')
     str_one_good_string = str_one_bad_string
     return str(str_one_good_string)
 
@@ -51,16 +52,10 @@ def combine_all_strings(array_of_good_strings: list):
                 array_of_good_strings[index + 1])  # взять по шаблону вторую строку из массива
             match3_ideal_string = objTemplateOfIdealString.search(
                 array_of_good_strings[index])  # искать по шаблону идеальную строку в элементе массива
-            if (
-                    match1 != None and match2 == None):  # если первая строка соответствует шаблну, а вторая - нет, то их надо объединить
-                array_of_new_good_strings.append('\n' + match1.group() + ' ' * 5 + array_of_good_strings[
-                    index + 1])  # соединить первуб и вторую строку, тк именно их надо соединить
+            if (match1 != None and match2 == None):  # если первая строка соответствует шаблну, а вторая - нет, то их надо объединить
+                array_of_new_good_strings.append('\n' + match1.group() + ' ' * 9 + array_of_good_strings[index + 1])  # соединить первуб и вторую строку, тк именно их надо соединить
             if (match3_ideal_string != None):
-                array_of_new_good_strings.append(
-                    '\n' + match3_ideal_string.group(1) + ' ' * 5 + match3_ideal_string.group(
-                        4))  # соединить первуб и вторую строку, тк именно их надо соединить
-    #print(array_of_new_good_strings)  # вывести в консоль для отладочной цели
-    #array_of_good_strings = array_of_new_good_strings  # теперь в хороший массив записываются новые данные вместо старых, это типа return
+                array_of_new_good_strings.append('\n' + match3_ideal_string.group(1) + ' ' * 9 + match3_ideal_string.group(4))  # соединить первуб и вторую строку, тк именно их надо соединить
     return array_of_new_good_strings
 
 
@@ -91,7 +86,7 @@ def delete_at_commands(array_of_strings:list):
     import re  # импорт модуля, будем работать с регулярными выражениями
     array_of_new_strings = []   # новый массив, который создаст и вернет данная функция
     array_of_current_strings = array_of_strings    # принятый массив сделаем текущим
-    objTemplateOfString = re.compile(r'^(\s)(\d\d:\d\d:\d\d.\d\d\d)(>)?(\s){1,10}\[\+|t\](.)+' )  #
+    objTemplateOfString = re.compile(r'^(\s)(\d\d:\d\d:\d\d.\d\d\d)(>)?(\s){1,10}\[\+|t\](.)+')  #
     for index in range(len(array_of_current_strings)):
         # str1 = array_of_current_strings[index] отладка
         objMatch = objTemplateOfString.search(array_of_current_strings[index])
