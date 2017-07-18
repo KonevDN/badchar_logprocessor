@@ -112,7 +112,7 @@ def insert_information_for_atcommands(array_of_bad_strings:list, dict_of_atcomma
             str_found_command_name = objMatch.group(5)  # взять 5ю группу, там содержится полное имя найденной Ат-команды
             # str_found_full_string = objMatch.group()    # взять всю строку, в которой найдена АТ-команда
             if str_found_command_name in dict_of_atcommands:
-                str_help_string = array_of_current_strings[index] + ' '*10 + 'help: ' + dict_of_atcommands[str_found_command_name] # составляется строка с подсказкой о назначении АТ-команды взамен текущей строки массива
+                str_help_string = array_of_current_strings[index] + ' '*10 + 'cmd: ' + dict_of_atcommands[str_found_command_name] # составляется строка с подсказкой о назначении АТ-команды взамен текущей строки массива
                 array_of_new_good_strings[index] = str_help_string # тут строка с подсказкой о назначении АТ-команды запихивается в новый массив, чтобы не испортить текущий массив. новый массив будет возвращаться функцией
                 continue
             continue
